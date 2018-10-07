@@ -4,6 +4,7 @@
 
 const express = require("express");
 const path = require("path");
+const bodyParser = require('body-parser');
 
 // --------------
 // Express Server
@@ -23,6 +24,8 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, './app/public')));
+app.use(bodyParser.text());
 
 // -------
 // Routers

@@ -1,28 +1,17 @@
-// ------------
-// Dependencies
-// ------------
+// Pull in required dependencies
+var path = require('path');
 
-const path = require("path");
+// Export HTML routes
+module.exports = function(app) {
+	// console.log('___ENTER htmlRoutes.js___');
 
-// -------
-// Routing
-// -------
+	// Home page
+	app.get('/', function(req, res) {
+		res.sendFile(path.join(__dirname, '../public/home.html'));
+	});
 
-module.exports = app => {
-  //Home Page
-
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
-  });
-  //Survey Page
-
-  app.get("/survey", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/survey.html"));
-  });
-
-  //If no matching route
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/home.html"));
-  });
+	// Survey page
+	app.get('/survey', function(req, res) {
+		res.sendFile(path.join(__dirname, '../public/survey.html'));
+	});
 };
